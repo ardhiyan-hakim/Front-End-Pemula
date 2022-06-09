@@ -6,7 +6,6 @@
 
 body {
   position: relative;
-  height: 300vh;
 }
 
 /* Layout Header */
@@ -59,9 +58,45 @@ header {
   transform: translateY(5px)
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
 /* Layout Form */
+form {
+  background-color: magenta;
+  width: inherit;
+  height: 100px;
+}
+
+.library__container {
+  display: flex;
+  flex-direction: row;
+}
+
 /* Layout Read Books */
+.read__books {
+  background-color: green;
+  width: 100%;
+  height: 65vh;
+}
 /* Layout Unread Books */
+.unread__books {
+  background-color: blue;
+  width: 100%;
+  height: 65vh;
+}
+
+/* DELETE LATER */
+form,
+.read__books,
+.unread__books {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* Layout Footer */
 footer {
