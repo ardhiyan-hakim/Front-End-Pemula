@@ -4,6 +4,12 @@
   padding: 0;
 }
 
+body {
+  position: relative;
+  height: 300vh;
+}
+
+/* Layout Header */
 header {
   background-color: red;
   height: 60px;
@@ -23,7 +29,7 @@ header {
 
 .header__container .logo {
   height: inherit;
-  background-color: blue;
+  background-color: yellow;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +38,7 @@ header {
 
 .header__container #menu-btn {
   height: inherit;
-  background-color: blue;
+  background-color: yellow;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,4 +57,30 @@ header {
 
 #menu-btn span:nth-child(3) {
   transform: translateY(5px)
+}
+
+/* Layout Form */
+/* Layout Read Books */
+/* Layout Unread Books */
+
+/* Layout Footer */
+footer {
+  background-color: red;
+  height: 40px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__container {
+  background-color: orange;
+  height: inherit;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
 }
