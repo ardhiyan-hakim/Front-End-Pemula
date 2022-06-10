@@ -102,13 +102,73 @@ main {
 form#form {
   background-color: whitesmoke;
   width: inherit;
-  height: 150px;
+  height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 50px;
 }
 
+.input {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  gap: 10px;
+}
+
+.input > input {
+  height: 30px;
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.input > input:focus {
+  border: 2px solid black;
+}
+
+.input .empty {
+  height: 18px;
+}
+
+.input .input__iscomplete {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.input .input__iscomplete input {
+  height: 30px;
+  width: 30px;
+  border: none;
+  outline: none;
+}
+
+.input button {
+  height: 36px;
+  width: 100%;
+  padding: 0 10px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.input button:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
 
 /* .input {
   display: flex;
