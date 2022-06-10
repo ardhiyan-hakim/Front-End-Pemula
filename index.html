@@ -18,16 +18,56 @@
           <span class="material-symbols-outlined"> book </span>
           Librarians
         </div>
-        <div id="menu-btn">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <form id="searchBook">
+          <div class="search__column">
+            <input type="text" id="searchMyBook" placeholder="Judul Buku" />
+          </div>
+          <div class="submit__column">
+            <button type="submit">
+              <span class="material-symbols-outlined"> search </span>
+            </button>
+          </div>
+        </form>
       </div>
     </header>
     <main>
       <div class="form">
-        <form id="form">a</form>
+        <form id="form">
+          <div class="input">
+            <label for="book-title">Judul</label>
+            <input
+              type="text"
+              id="book-title"
+              placeholder="Judul Buku"
+              required
+            />
+          </div>
+          <div class="input">
+            <label for="author">Penulis</label>
+            <input
+              type="text"
+              id="author"
+              placeholder="Penulis Buku"
+              required
+            />
+          </div>
+          <div class="input">
+            <label for="publication-year">Tahun Terbit</label>
+            <input
+              type="text"
+              id="publication-year"
+              placeholder="Tahun Terbit Buku"
+              required
+            />
+          </div>
+          <div class="input">
+            <div class="input__iscomplete">
+              <label for="is-read">Selesai Dibaca</label>
+              <input type="checkbox" id="is-read" />
+            </div>
+          </div>
+          <button id="submit" type="submit">Input Your Book</button>
+        </form>
       </div>
       <div class="library__container">
         <div class="read__books">b</div>
@@ -35,9 +75,7 @@
       </div>
     </main>
     <footer>
-      <div class="footer__container">
-        &copy Ardhiyan Abdul Hakim, 2022
-      </div>
+      <div class="footer__container">&copy Ardhiyan Abdul Hakim, 2022</div>
     </footer>
 
     <script src="/assets//scripts/index.js"></script>
