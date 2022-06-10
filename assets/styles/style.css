@@ -10,14 +10,14 @@ body {
 
 /* Layout Header */
 header {
-  background-color: orange;
+  background-color: black;
   height: 60px;
   width: 100%;
   padding: 0 50px;
 }
 
 .header__container {
-  background-color: orange;
+  background-color: black;
   height: inherit;
   max-width: 1400px;
   margin: 0 auto;
@@ -28,7 +28,7 @@ header {
 
 .header__container .logo {
   height: inherit;
-  background-color: orange;
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,7 +37,7 @@ header {
 
 .header__container #menu-btn {
   height: 40px;
-  background-color: orange;
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,7 +79,7 @@ main {
 form {
   background-color: magenta;
   width: inherit;
-  height: 100px;
+  height: 150px;
 }
 
 .library__container {
@@ -113,7 +113,7 @@ form,
 
 /* Layout Footer */
 footer {
-  background-color: orange;
+  background-color: black;
   height: 30px;
   width: 100%;
   position: fixed;
