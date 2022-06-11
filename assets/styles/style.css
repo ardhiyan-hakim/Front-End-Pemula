@@ -219,13 +219,14 @@ form#form {
   display: grid;
   grid-template-columns: auto auto;
   gap: 16px;
+  justify-content: center;
 }
 
 .read__container .read__card,
 .unread__container .unread__card {
   background-color: black;
   color: whitesmoke;
-  width: 100%;
+  width: 300px;
   padding: 16px 20px;
   border-radius: 16px;
 }
