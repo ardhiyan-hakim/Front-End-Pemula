@@ -184,11 +184,59 @@ form#form {
 
 /* Layout Read Books */
 .read__books {
-  background-color: green;
+  display: flex;
+  flex-direction: column;
+  background-color: magenta;
   width: 100%;
   height: 70vh;
   border-right: 5px solid yellow;
 }
+
+.read__books .read__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.read__container {
+  display: flex;
+  gap: 20px;
+  margin: 10px 20px 0;
+}
+
+.read__container .read__card {
+  background-color: black;
+  color: whitesmoke;
+  width: 50%;
+  padding: 16px 20px;
+  border-radius: 16px;
+}
+
+.read__card .card__content h2 {
+  margin-bottom: 10px;
+}
+
+.read__container .read__card .card__button {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.read__card .card__button span {
+  padding: 5px;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.read__card .card__button span:hover {
+  background-color: white;
+  color: black;
+  padding: 5px;
+  border-radius: 100%;
+}
+
 
 /* Layout Unread Books */
 .unread__books {
@@ -199,7 +247,6 @@ form#form {
 }
 
 /* DELETE LATER */
-.read__books,
 .unread__books {
   display: flex;
   justify-content: center;
