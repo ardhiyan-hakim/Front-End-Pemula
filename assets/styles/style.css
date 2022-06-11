@@ -231,6 +231,11 @@ form#form {
   border-radius: 16px;
 }
 
+.empty__card {
+  width: 152px;
+  max-width: 100%;
+}
+
 .read__card .card__content h2,
 .unread__card .card__content h2 {
   margin-bottom: 10px;
