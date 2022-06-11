@@ -168,6 +168,13 @@ form#form {
   background-color: white;
   color: black;
   border: 2px solid black;
+  box-shadow: 0 5px grey;
+  transform: translateY(-5px);
+}
+
+.input button:active {
+  box-shadow: none;
+  transform: translateY(0px);
 }
 
 .library__container {
