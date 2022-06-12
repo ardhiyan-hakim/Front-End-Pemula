@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function insertBookToLibrary() {
   createData();
   renderData(books);
+  showSnackbar();
 }
 
 function createData() {
@@ -42,6 +43,14 @@ function renderData(books) {
   });
 }
 
+function showSnackbar() {
+  const snackbar = document.getElementById("snackbar");
+  snackbar.className = "show";
+  setTimeout(function () {
+    snackbar.className = snackbar.className.replace("show", "");
+  }, 2000);
+}
+
 // COMPONENT CREATOR
 function createComponent(book) {
   const cardTitle = document.createElement("h2");
@@ -67,7 +76,14 @@ function createComponent(book) {
       moveBookToUnreadBooks(book.id);
     });
 
-    createCard(book.id, cardTitle, cardDetail, undoBtn, trashBtn, book.isCompleted);
+    createCard(
+      book.id,
+      cardTitle,
+      cardDetail,
+      undoBtn,
+      trashBtn,
+      book.isCompleted
+    );
   } else {
     const doneBtn = document.createElement("span");
     doneBtn.classList.add("material-symbols-outlined");
@@ -77,7 +93,14 @@ function createComponent(book) {
       moveBookToReadBooks(book.id);
     });
 
-    createCard(book.id, cardTitle, cardDetail, doneBtn, trashBtn, book.isCompleted);
+    createCard(
+      book.id,
+      cardTitle,
+      cardDetail,
+      doneBtn,
+      trashBtn,
+      book.isCompleted
+    );
   }
 }
 
@@ -123,8 +146,9 @@ function inputCardToDOM(card, isCompleted) {
   }
 }
 
+// BUTTON ACTION
 function moveBookToUnreadBooks(id) {
-  const currBook = findBook(id);  
+  const currBook = findBook(id);
   if (currBook == null) return;
 
   currBook.isCompleted = false;
