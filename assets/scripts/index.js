@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   searchBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    searchBook();
   });
 
   if (isStorageExist()) {
@@ -165,8 +166,6 @@ function createCard(id, cardTitle, cardDetail, optBtn, trashBtn, isCompleted) {
 }
 
 function inputCardToDOM(card, isCompleted) {
-  console.log(books);
-
   if (isCompleted) {
     const readContainer = document.querySelector("#read-container");
     readContainer.append(card);
@@ -252,4 +251,35 @@ function loadDataFromStorage() {
   }
 
   renderData(books);
+}
+
+// SEARCH FUNCTIONALITY
+function searchBook() {
+  const queueBook = [];
+  const searchInput = document.querySelector('#search-input').value;
+
+  for (const book of books) {
+    const result = book.title.toLowerCase().includes(searchInput);
+
+    if (result) {
+      queueBook.push(book);
+    }
+  }
+
+  if (queueBook.length === 0) {
+    renderData(queueBook);
+    showSnackbar('Sistem tidak dapat menemukan buku yang anda cari');
+  } else {
+    renderData(queueBook);
+    showSnackbar('Berhasil menemukan buku yang dicari');
+  }
+
+  console.log(queueBook);
+}
+
+function searchByTitle(titleBook, titleSearch) {
+  // const result = titleBook.toLowerCase().include(titleSearch)
+  if (true) {
+    console.log(`Berhasil Mencari Buku ${titleBook}`);
+  }
 }
