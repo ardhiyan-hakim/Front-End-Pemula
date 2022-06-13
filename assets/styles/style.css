@@ -60,7 +60,7 @@ header {
   height: 100%;
 }
 
-#searchBook .submit__column {
+#searchBook .__column {
   height: 36px;
 }
 
@@ -89,6 +89,28 @@ header {
 
 .logo span {
   margin-right: 6px;
+}
+
+#search-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-submit span {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s;
+  font-size: 30px;
+}
+
+#search-submit span:hover {
+  transform: rotate(-360deg);
+}
+
+#search-submit span:active {
+  opacity: 0.5;
+  transform: scale(80%);
 }
 
 main {
@@ -168,14 +190,14 @@ form#form {
 .input button:hover {
   background-color: white;
   color: black;
-  border: 2px solid black;
-  box-shadow: 0 5px grey;
-  transform: translateY(-5px);
+  border: 0.5px solid black;
+  box-shadow: 4px 4px black;
+  transform: translate(-5px, -5px)
 }
 
 .input button:active {
   box-shadow: none;
-  transform: translateY(0px);
+  transform: translate(0px, 0px);
 }
 
 .library__container {

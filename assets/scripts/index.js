@@ -3,10 +3,15 @@ const STORAGE_KEY = 'BOOKSHELF-APP';
 
 document.addEventListener("DOMContentLoaded", () => {
   const submitBtn = document.querySelector("#submit");
+  const searchBtn = document.querySelector('#search-submit');
+
   submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
-
     insertBookToLibrary();
+  });
+
+  searchBtn.addEventListener('click', (e) => {
+    e.preventDefault();
   });
 
   if (isStorageExist()) {
@@ -18,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
 function insertBookToLibrary() {
   createData();
   renderData(books);
-  showSnackbar();
   storeData();
 }
 
@@ -30,7 +34,24 @@ function createData() {
   const isCompleted = document.querySelector("#is-read").checked;
 
   const currBook = createObject(id, title, author, year, isCompleted);
+
+  if (title.length === 0) {
+    showSnackbar("Harap mengisikan Judul Buku terlebih dahulu");
+    return false;
+  }
+
+  if (author.length === 0) {
+    showSnackbar("Harap mengisikan Nama Penulis terlebih dahulu");
+    return false;
+  }
+
+  if (year.toString().length === 0) {
+    showSnackbar("Harap mengisikan Tahun Terbit terlebih dahulu");
+    return false;
+  }
+  
   books.push(currBook);
+  showSnackbar("Berhasil Menambahkan Buku ke dalam Library ~!");
 }
 
 function createObject(id, title, author, year, isCompleted) {
@@ -50,9 +71,11 @@ function renderData(books) {
 }
 
 // SNACKBAR
-function showSnackbar() {
+function showSnackbar(description) {
   const snackbar = document.getElementById("snackbar");
+  snackbar.innerText = description;
   snackbar.className = "show";
+
   setTimeout(function () {
     snackbar.className = snackbar.className.replace("show", "");
   }, 2000);
