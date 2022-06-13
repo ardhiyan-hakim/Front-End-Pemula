@@ -1,4 +1,5 @@
 const books = [];
+const STORAGE_KEY = 'BOOKSHELF-APP';
 
 document.addEventListener("DOMContentLoaded", () => {
   const submitBtn = document.querySelector("#submit");
@@ -7,6 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     insertBookToLibrary();
   });
+
+  if (isStorageExist()) {
+    loadDataFromStorage();
+  };
 });
 
 // SUBMIT ACTION
@@ -14,6 +19,7 @@ function insertBookToLibrary() {
   createData();
   renderData(books);
   showSnackbar();
+  storeData();
 }
 
 function createData() {
@@ -43,6 +49,7 @@ function renderData(books) {
   });
 }
 
+// SNACKBAR
 function showSnackbar() {
   const snackbar = document.getElementById("snackbar");
   snackbar.className = "show";
@@ -153,6 +160,7 @@ function moveBookToUnreadBooks(id) {
 
   currBook.isCompleted = false;
   renderData(books);
+  storeData();
 }
 
 function moveBookToReadBooks(id) {
@@ -161,16 +169,16 @@ function moveBookToReadBooks(id) {
 
   currBook.isCompleted = true;
   renderData(books);
+  storeData();
 }
 
 function removeBookFromLibrary(id) {
-  console.log(`${id}-Trash Button`);
-
   const currBook = findIndexBook(id);
   if (currBook === -1) return;
 
   books.splice(currBook, 1);
   renderData(books);
+  storeData();
 }
 
 function findBook(id) {
@@ -191,4 +199,34 @@ function findIndexBook(id) {
   }
 
   return -1;
+}
+
+// WEB STORAGE
+function storeData() {
+  if (isStorageExist()) {
+    const storageData = JSON.stringify(books);
+    localStorage.setItem(STORAGE_KEY, storageData);
+  }
+}
+
+function isStorageExist() {
+  if (typeof Storage === undefined) {
+    alert("Maaf, Browser yang Anda gunakan tidak mendukung local storage");
+    return false;
+  }
+
+  return true;
+}
+
+function loadDataFromStorage() {
+  const savedData = localStorage.getItem(STORAGE_KEY);
+  const data = JSON.parse(savedData);
+
+  if (data !== null) {
+    data.forEach((book) => {
+      books.push(book);
+    })
+  }
+
+  renderData(books);
 }
