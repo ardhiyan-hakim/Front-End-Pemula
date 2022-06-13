@@ -20,10 +20,10 @@
         </div>
         <form id="searchBook">
           <div class="search__column">
-            <input type="text" id="searchMyBook" placeholder="Judul Buku" />
+            <input type="text" id="search-input" placeholder="Ketik Judul Buku" />
           </div>
           <div class="submit__column">
-            <button type="submit">
+            <button type="submit" id="search-submit">
               <span class="material-symbols-outlined"> search </span>
             </button>
           </div>
@@ -65,7 +65,7 @@
             <div class="empty"></div>
             <div class="input__iscomplete">
               <label for="is-read">Selesai Dibaca</label>
-              <input type="checkbox" id="is-read" />
+              <input type="checkbox" id="is-read"/>
             </div>
           </div>
           <div class="input">
@@ -80,19 +80,7 @@
             <div class="read__title">
               <h1>Read Books</h1>
             </div>
-            <div class="read__container">
-              <div class="read__card">
-                <div class="card__content">
-                  <h2>Harry Potter</h2>
-                  <h4>JK Rowling - 1971</h4>
-                </div>
-                <div class="card__button">
-                  <span class="material-symbols-outlined"> done_outline </span>
-                  <span class="material-symbols-outlined"> undo </span>
-                  <span class="material-symbols-outlined"> delete </span>
-                </div>
-              </div>
-              <div class="empty__card"></div>              
+            <div class="read__container" id="read-container">
             </div>
           </div>
         </div>
@@ -101,28 +89,17 @@
             <div class="unread__title">
               <h1>Unread Books</h1>
             </div>
-            <div class="unread__container">
-              <div class="unread__card">
-                <div class="card__content">
-                  <h2>Harry Potter</h2>
-                  <h4>JK Rowling - 1971</h4>
-                </div>
-                <div class="card__button">
-                  <span class="material-symbols-outlined"> done_outline </span>
-                  <span class="material-symbols-outlined"> undo </span>
-                  <span class="material-symbols-outlined"> delete </span>
-                </div>
-              </div>
-              <div class="empty__card"></div>              
+            <div class="unread__container" id="unread-container">
             </div>
           </div>
         </div>
       </div>
+      <div id="snackbar"></div>
     </main>
     <footer>
       <div class="footer__container">&copy Ardhiyan Abdul Hakim, 2022</div>
     </footer>
 
-    <script src="/assets//scripts/index.js"></script>
+    <script type="module" src="assets/scripts/index.js"></script>
   </body>
 </html>
