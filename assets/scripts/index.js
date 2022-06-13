@@ -273,13 +273,4 @@ function searchBook() {
     renderData(queueBook);
     showSnackbar('Berhasil menemukan buku yang dicari');
   }
-
-  console.log(queueBook);
-}
-
-function searchByTitle(titleBook, titleSearch) {
-  // const result = titleBook.toLowerCase().include(titleSearch)
-  if (true) {
-    console.log(`Berhasil Mencari Buku ${titleBook}`);
-  }
 }
