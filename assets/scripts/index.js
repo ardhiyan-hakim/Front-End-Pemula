@@ -214,10 +214,40 @@ function moveBookToReadBooks(id) {
 }
 
 function editBookInLibrary(id) {
-  console.log("Fungsi Tombol Edit sedang berjalan");
+  const header = document.querySelector("#header");
+  const main = document.querySelector("#main");
+  const modals = document.querySelector("#modals");
   
-  showModals();
-  exitModals();
+  showModals(header, main, modals);
+  exitModals(header, main, modals);
+
+  const indexBook = findIndexBook(id);
+  if (indexBook === -1) return;
+  
+  const editSubmit = document.querySelector('#edit-submit');
+  editSubmit.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const editTitle = document.querySelector("#edit-book-title").value;
+    const editAuthor = document.querySelector("#edit-author").value;
+    const editYear = document.querySelector("#edit-publication-year").value;
+    const editIsCompleted = document.querySelector("#edit-is-read").checked;
+
+    books[indexBook] = {
+      ...books[indexBook],
+      title: editTitle,
+      author: editAuthor,
+      year: editYear,
+      isCompleted: editIsCompleted,
+    };
+    renderData(books);
+
+    header.classList.remove("blur");
+    main.classList.remove("blur");
+    modals.classList.remove("show");
+
+    storeData();
+  });
 }
 
 function removeBookFromLibrary(id) {
@@ -229,17 +259,13 @@ function removeBookFromLibrary(id) {
   storeData();
 }
 
-function showModals() {
-  const header = document.querySelector("#header");
-  const main = document.querySelector("#main");
-  const modals = document.querySelector("#modals");
-
+function showModals(header, main, modals) {
   header.classList.add("blur");
   main.classList.add("blur");
   modals.classList.add("show");
 }
 
-function exitModals() {
+function exitModals(header, main, modals) {
   const exitBtn = document.querySelector(".modals__header span");
   exitBtn.addEventListener("click", () => {
     header.classList.remove("blur");
