@@ -1,23 +1,23 @@
 const books = [];
-const STORAGE_KEY = 'BOOKSHELF-APP';
+const STORAGE_KEY = "BOOKSHELF-APP";
 
 document.addEventListener("DOMContentLoaded", () => {
   const submitBtn = document.querySelector("#submit");
-  const searchBtn = document.querySelector('#search-submit');
+  const searchBtn = document.querySelector("#search-submit");
 
   submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
     insertBookToLibrary();
   });
 
-  searchBtn.addEventListener('click', (e) => {
+  searchBtn.addEventListener("click", (e) => {
     e.preventDefault();
     searchBook();
   });
 
   if (isStorageExist()) {
     loadDataFromStorage();
-  };
+  }
 });
 
 // SUBMIT ACTION
@@ -50,7 +50,7 @@ function createData() {
     showSnackbar("Harap mengisikan Tahun Terbit terlebih dahulu");
     return false;
   }
-  
+
   books.push(currBook);
   showSnackbar("Berhasil Menambahkan Buku ke dalam Library ~!");
 }
@@ -86,11 +86,19 @@ function showSnackbar(description) {
 function createComponent(book) {
   const cardTitle = document.createElement("h2");
   const cardDetail = document.createElement("h4");
-  const trashBtn = document.createElement("span");
 
   cardTitle.innerText = book.title;
   cardDetail.innerText = `${book.author} - ${book.year}`;
 
+  const editBtn = document.createElement("span");
+  editBtn.classList.add("material-symbols-outlined");
+  editBtn.innerText = " edit ";
+
+  editBtn.addEventListener("click", () => {
+    editBookInLibrary(book.id);
+  });
+
+  const trashBtn = document.createElement("span");
   trashBtn.classList.add("material-symbols-outlined");
   trashBtn.innerText = " delete ";
 
@@ -112,6 +120,7 @@ function createComponent(book) {
       cardTitle,
       cardDetail,
       undoBtn,
+      editBtn,
       trashBtn,
       book.isCompleted
     );
@@ -129,13 +138,22 @@ function createComponent(book) {
       cardTitle,
       cardDetail,
       doneBtn,
+      editBtn,
       trashBtn,
       book.isCompleted
     );
   }
 }
 
-function createCard(id, cardTitle, cardDetail, optBtn, trashBtn, isCompleted) {
+function createCard(
+  id,
+  cardTitle,
+  cardDetail,
+  optBtn,
+  editBtn,
+  trashBtn,
+  isCompleted
+) {
   const cardContent = document.createElement("div");
   cardContent.classList.add("card__content");
   const cardBtn = document.createElement("div");
@@ -144,6 +162,7 @@ function createCard(id, cardTitle, cardDetail, optBtn, trashBtn, isCompleted) {
   cardContent.append(cardTitle);
   cardContent.append(cardDetail);
   cardBtn.append(optBtn);
+  cardBtn.append(editBtn);
   cardBtn.append(trashBtn);
 
   if (isCompleted) {
@@ -194,6 +213,13 @@ function moveBookToReadBooks(id) {
   storeData();
 }
 
+function editBookInLibrary(id) {
+  console.log("Fungsi Tombol Edit sedang berjalan");
+  
+  showModals();
+  exitModals();
+}
+
 function removeBookFromLibrary(id) {
   const currBook = findIndexBook(id);
   if (currBook === -1) return;
@@ -201,6 +227,25 @@ function removeBookFromLibrary(id) {
   books.splice(currBook, 1);
   renderData(books);
   storeData();
+}
+
+function showModals() {
+  const header = document.querySelector("#header");
+  const main = document.querySelector("#main");
+  const modals = document.querySelector("#modals");
+
+  header.classList.add("blur");
+  main.classList.add("blur");
+  modals.classList.add("show");
+}
+
+function exitModals() {
+  const exitBtn = document.querySelector(".modals__header span");
+  exitBtn.addEventListener("click", () => {
+    header.classList.remove("blur");
+    main.classList.remove("blur");
+    modals.classList.remove("show");
+  });
 }
 
 function findBook(id) {
@@ -247,7 +292,7 @@ function loadDataFromStorage() {
   if (data !== null) {
     data.forEach((book) => {
       books.push(book);
-    })
+    });
   }
 
   renderData(books);
@@ -256,7 +301,7 @@ function loadDataFromStorage() {
 // SEARCH FUNCTIONALITY
 function searchBook() {
   const queueBook = [];
-  const searchInput = document.querySelector('#search-input').value;
+  const searchInput = document.querySelector("#search-input").value;
 
   for (const book of books) {
     const result = book.title.toLowerCase().includes(searchInput);
@@ -268,9 +313,9 @@ function searchBook() {
 
   if (queueBook.length === 0) {
     renderData(queueBook);
-    showSnackbar('Sistem tidak dapat menemukan buku yang anda cari');
+    showSnackbar("Sistem tidak dapat menemukan buku yang anda cari");
   } else {
     renderData(queueBook);
-    showSnackbar('Berhasil menemukan buku yang dicari');
+    showSnackbar("Berhasil menemukan buku yang dicari");
   }
 }

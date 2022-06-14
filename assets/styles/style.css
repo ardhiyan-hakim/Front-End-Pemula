@@ -14,7 +14,7 @@ header {
   background-color: black;
   height: 60px;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 20px;transition: 0.5s;
 }
 
 .header__container {
@@ -118,6 +118,7 @@ main {
   flex-direction: column;
   width: 100%;
   height: 100vh;
+  transition: 0.5s;
 }
 
 /* Layout Form */
@@ -255,14 +256,15 @@ form#form {
   border-radius: 16px;
 }
 
-.empty__card {
-  width: 152px;
-  max-width: 100%;
-}
-
 .read__card .card__content h2,
 .unread__card .card__content h2 {
   margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.read__card .card__content h4,
+.unread__card .card__content h4 {
+  font-size: 14px;
 }
 
 .read__container .read__card .card__button,
@@ -271,6 +273,7 @@ form#form {
   justify-content: center;
   gap: 30px;
   margin-top: 30px;
+  padding-bottom: 15px;
 }
 
 .read__card .card__button span,
@@ -366,4 +369,78 @@ footer {
   color: whitesmoke;
   border-top: 3px solid white;
   border-bottom: 3px solid white;
+}
+
+/* MODALS */
+main.blur,
+header.blur {
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.modals {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  transition: 0.23s ease, transform 0.5s ease;
+}
+
+.modals.show {
+  visibility: visible;
+  opacity: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  /* transition: 0.23s ease; */
+}
+
+.modals .modals__content {
+  background-color: white;
+  width: 80%;
+  height: 100%;
+  padding: 0px 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modals__content .modals__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 10px;
+} 
+
+.modals__header span {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  font-weight: bold;
+  transform: scale(90%);
+  transition: 0.3s;
+}
+
+.modals__header span:hover {
+  transform: scale(140%);
+  
+}
+
+form#form-edit {
+  background-color: white;
+  width: inherit;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
 }

@@ -12,7 +12,7 @@
     />
   </head>
   <body>
-    <header>
+    <header id="header">
       <div class="header__container">
         <div class="logo">
           <span class="material-symbols-outlined"> book </span>
@@ -20,7 +20,11 @@
         </div>
         <form id="searchBook">
           <div class="search__column">
-            <input type="text" id="search-input" placeholder="Ketik Judul Buku" />
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Ketik Judul Buku"
+            />
           </div>
           <div class="submit__column">
             <button type="submit" id="search-submit">
@@ -30,7 +34,7 @@
         </form>
       </div>
     </header>
-    <main>
+    <main id="main">
       <div class="form">
         <form id="form">
           <div class="input">
@@ -65,7 +69,7 @@
             <div class="empty"></div>
             <div class="input__iscomplete">
               <label for="is-read">Selesai Dibaca</label>
-              <input type="checkbox" id="is-read"/>
+              <input type="checkbox" id="is-read" />
             </div>
           </div>
           <div class="input">
@@ -80,8 +84,7 @@
             <div class="read__title">
               <h1>Read Books</h1>
             </div>
-            <div class="read__container" id="read-container">
-            </div>
+            <div class="read__container" id="read-container"></div>
           </div>
         </div>
         <div class="unread__books">
@@ -89,13 +92,65 @@
             <div class="unread__title">
               <h1>Unread Books</h1>
             </div>
-            <div class="unread__container" id="unread-container">
-            </div>
+            <div class="unread__container" id="unread-container"></div>
           </div>
         </div>
       </div>
       <div id="snackbar"></div>
     </main>
+    <div class="modals" id="modals">
+      <div class="modals__content">
+        <div class="modals__header">
+          <div class="modals__title"><h2>Edit Book</h2></div>
+          <div class="modals__exit">
+            <span class="material-symbols-outlined"> close </span>
+          </div>
+        </div>
+        <div class="form">
+          <form id="form-edit">
+            <div class="input">
+              <label for="book-title">Judul</label>
+              <input
+                type="text"
+                id="book-title"
+                placeholder="Judul Buku"
+                autofocus
+                required
+              />
+            </div>
+            <div class="input">
+              <label for="author">Penulis</label>
+              <input
+                type="text"
+                id="author"
+                placeholder="Penulis Buku"
+                required
+              />
+            </div>
+            <div class="input">
+              <label for="publication-year">Tahun Terbit</label>
+              <input
+                type="text"
+                id="publication-year"
+                placeholder="Tahun Terbit Buku"
+                required
+              />
+            </div>
+            <div class="input">
+              <div class="empty"></div>
+              <div class="input__iscomplete">
+                <label for="is-read">Selesai Dibaca</label>
+                <input type="checkbox" id="is-read" />
+              </div>
+            </div>
+            <div class="input">
+              <div class="empty"></div>
+              <button id="submit" type="edit-submit">Confirm</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     <footer>
       <div class="footer__container">&copy Ardhiyan Abdul Hakim, 2022</div>
     </footer>
