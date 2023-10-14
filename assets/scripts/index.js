@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function insertBookToLibrary() {
   createData();
   renderData(books);
+  resetInput();
   storeData();
 }
 
@@ -217,15 +218,15 @@ function editBookInLibrary(id) {
   const header = document.querySelector("#header");
   const main = document.querySelector("#main");
   const modals = document.querySelector("#modals");
-  
+
   showModals(header, main, modals);
   exitModals(header, main, modals);
 
   const indexBook = findIndexBook(id);
   if (indexBook === -1) return;
-  
-  const editSubmit = document.querySelector('#edit-submit');
-  editSubmit.addEventListener('click', (e) => {
+
+  const editSubmit = document.querySelector("#edit-submit");
+  editSubmit.addEventListener("click", (e) => {
     e.preventDefault();
 
     const editTitle = document.querySelector("#edit-book-title").value;
@@ -292,6 +293,15 @@ function findIndexBook(id) {
   }
 
   return -1;
+}
+
+// RESET INPUT
+function resetInput() {
+  document.querySelector("#book-title").value = "";
+  document.querySelector("#book-title").value = "";
+  document.querySelector("#author").value = "";
+  document.querySelector("#publication-year").value = "";
+  document.querySelector("#is-read").checked = false;
 }
 
 // WEB STORAGE
